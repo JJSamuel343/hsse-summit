@@ -56,7 +56,7 @@ function prepareEmailContent($name, $ticket_number)
   return $template;
 }
 
-function sendEmail($recipient_email, $recipient_name, $email_content)
+function sendEmail($recipient_email, $recipient_name, $ticket_number)
 {
   $api_key = $_ENV['BREVO_API'];  // Replace with your Brevo API Key
 
@@ -71,8 +71,12 @@ function sendEmail($recipient_email, $recipient_name, $email_content)
         "name" => $recipient_name
       )
     ),
+    "params" => array(
+      "name" => $recipient_name,
+      "photo_url" => generateQRCode($ticket_number),
+    ),
+    "templateId" => 42,
     "subject" => "Your Ticket and QR Code",
-    "htmlContent" => $email_content
   );
 
   $curl = curl_init();
@@ -171,7 +175,7 @@ foreach ($users as $u) {
   }
 
 
-  $emailContent =  prepareEmailContent($u[0], $u[2]);
+  // $emailContent =  prepareEmailContent($u[0], $u[2]);
   // echo $emailContent;
-  sendEmail($u[1], $u[0], $emailContent);
+  sendEmail($u[1], $u[0], $u[2]);
 }
