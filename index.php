@@ -9,7 +9,7 @@
 
 <body>
   <?php
-  echo "Testing";
+  echo "Repo working test...";
   ?>
   <script src="/assets/js/index.js"></script>
 </body>
