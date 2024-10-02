@@ -33,7 +33,7 @@ function generateQRCode($ticket_number)
   (new QRCode($options))->render($verification_url, $image_file);
 
   // Return the relative path to the image
-  return __DIR__ . '/qrcodes/' . $ticket_number . '.png'; // The relative path to use in the email content
+  return "https://synapzemy.com/EMRSVP/server" . '/qrcodes/' . $ticket_number . '.png'; // The relative path to use in the email content
 
 }
 
