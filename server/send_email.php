@@ -17,7 +17,6 @@ function generateQRCode($ticket_number)
   // Create QR code options
   $options = new QROptions([
     'eccLevel' => EccLevel::H,              // Error correction level
-    'imageBase64' => true,                    // To encode image as base64
     'scale' => 10,                             // Size of the QR code
   ]);
 
