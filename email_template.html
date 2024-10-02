@@ -56,15 +56,21 @@
 <body>
   <div style="display:flex;justify-content:center;align-items:center; margin-bottom:35px"><img src="/assets/img/email_banner.jpg" style="text-align:center;max-width:900px;" width="100%" height="auto" /></div>
   <table class="main-table">
+    <colgroup>
+      <col />
+      <col />
+      <col />
+      <col width="150" />
+    </colgroup>
     <tbody>
       <tr>
         <td class="title" colspan="3">HSSE Partners Summit 2024</td>
-        <td><img src="test" /></td>
+        <td>{{ qr_code }}</td>
       </tr>
       <tr>
         <td colspan="4">
           <p class="title">Name</p>
-          <p class="content">Some Name</p>
+          <p class="content">{{ name }}</p>
         </td>
       </tr>
       <tr>
@@ -78,8 +84,7 @@
       <tr>
         <td colspan="4">
           <p class="title">Ticket #</p>
-          <p class="content">1017965
-            RSVP</p>
+          <p class="content">{{ ticket_number }} </p>
         </td>
       </tr>
     </tbody>
