@@ -24,7 +24,7 @@ function generateQRCode($ticket_number)
   ]);
 
   // Define the path where the QR code will be saved
-  $image_file = __DIR__ . '/qrcodes/' . $ticket_number . '.png';  // Save in 'qrcodes' folder with ticket number as file name
+  $image_file = __DIR__ . '/qrcodes/' . $ticket_number . time() . '.png';  // Save in 'qrcodes' folder with ticket number as file name
 
   // Ensure the 'qrcodes' directory exists
   if (!file_exists(__DIR__ . '/qrcodes')) {
@@ -35,7 +35,7 @@ function generateQRCode($ticket_number)
   (new QRCode($options))->render($verification_url, $image_file);
 
   // Return the relative path to the image
-  return "https://synapzemy.com/EMRSVP/server" . '/qrcodes/' . $ticket_number . '.png'; // The relative path to use in the email content
+  return "https://synapzemy.com/EMRSVP/server" . '/qrcodes/' . $ticket_number . time() . '.png'; // The relative path to use in the email content
 
 }
 
