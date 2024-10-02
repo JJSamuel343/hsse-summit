@@ -1,0 +1,12 @@
+{
+    "name": "vs/hsse2024",
+    "authors": [
+        {
+            "name": "JJSamuel343",
+            "email": "joshuajs92@gmail.com"
+        }
+    ],
+    "require": {
+        "chillerlan/php-qrcode": "^5.0"
+    }
+}
