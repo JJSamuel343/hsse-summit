@@ -10,7 +10,6 @@ use chillerlan\QRCode\QROptions;
 
 $dotenv = Dotenv::createImmutable(dirname(__DIR__)); // Adjust path to point to your .env
 $dotenv->load();
-var_dump($dotenv);
 
 function generateQRCode($ticket_number)
 {
@@ -48,7 +47,7 @@ function prepareEmailContent($name, $ticket_number)
 
 function sendEmail($recipient_email, $recipient_name, $email_content)
 {
-  $api_key = getenv("BREVO_API");  // Replace with your Brevo API Key
+  $api_key = $_ENV['BREVO_API'];  // Replace with your Brevo API Key
 
   $data = array(
     "sender" => array(
@@ -85,5 +84,4 @@ function sendEmail($recipient_email, $recipient_name, $email_content)
   }
 }
 
-var_dump(getenv("BREVO_API"));
 echo prepareEmailContent('Test', '2552424s');
