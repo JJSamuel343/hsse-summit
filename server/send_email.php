@@ -3,9 +3,14 @@
 require_once '../vendor/autoload.php';
 require_once "./conn.php";
 
+use Dotenv\Dotenv;
 use chillerlan\QRCode\Common\EccLevel;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
+
+$dotenv = Dotenv::createImmutable(dirname(__DIR__)); // Adjust path to point to your .env
+$dotenv->load();
+var_dump($dotenv);
 
 function generateQRCode($ticket_number)
 {
@@ -80,5 +85,5 @@ function sendEmail($recipient_email, $recipient_name, $email_content)
   }
 }
 
-
+var_dump(getenv("BREVO_API"));
 echo prepareEmailContent('Test', '2552424s');
