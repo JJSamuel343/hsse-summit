@@ -170,9 +170,6 @@ function seedTest($conn)
 $users = getUsers($conn);
 
 foreach ($users as $u) {
-  if ($u[0] !== "Joshua") {
-    continue;
-  }
 
 
   // $emailContent =  prepareEmailContent($u[0], $u[2]);
