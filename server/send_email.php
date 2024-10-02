@@ -13,7 +13,7 @@ $dotenv->load();
 
 function generateQRCode($ticket_number)
 {
-  $verification_url = "https://yourdomain.com/verify.php?ticket_number=" . urlencode($ticket_number);
+  $verification_url = "https://synapzemy.com/EMRSVP/verify.php?ticket_number=" . urlencode($ticket_number);
   // Create QR code options
   $options = new QROptions([
     'eccLevel' => EccLevel::H,              // Error correction level
@@ -21,11 +21,20 @@ function generateQRCode($ticket_number)
     'scale' => 10,                             // Size of the QR code
   ]);
 
-  // Generate the QR code as a base64 encoded PNG image
-  $qrCode = (new QRCode($options))->render($verification_url);
+  // Define the path where the QR code will be saved
+  $image_file = __DIR__ . '/qrcodes/' . $ticket_number . '.png';  // Save in 'qrcodes' folder with ticket number as file name
 
-  // Return the base64 image string (without the `data:image/png;base64,` part)
-  return $qrCode;
+  // Ensure the 'qrcodes' directory exists
+  if (!file_exists(__DIR__ . '/qrcodes')) {
+    mkdir(__DIR__ . '/qrcodes', 0755, true);  // Create directory if not exists
+  }
+
+  // Save the QR code as a PNG file
+  (new QRCode($options))->render($verification_url, $image_file);
+
+  // Return the relative path to the image
+  return __DIR__ . '/qrcodes/' . $ticket_number . '.png'; // The relative path to use in the email content
+
 }
 
 
