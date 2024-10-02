@@ -50,7 +50,7 @@ function prepareEmailContent($name, $ticket_number)
   $template = str_replace('{{ ticket_number }}', htmlspecialchars($ticket_number), $template);
 
   // Embed the base64 QR code image inline in the email
-  $qr_code_img_tag = '<img src="' . generateQRCode($ticket_number) . '" alt="QR Code">';
+  $qr_code_img_tag = '<img height="150px" width="150px" src="' . generateQRCode($ticket_number) . '" alt="QR Code">';
   $template = str_replace('{{ qr_code }}', $qr_code_img_tag, $template);
 
   return $template;
@@ -99,11 +99,11 @@ function sendEmail($recipient_email, $recipient_name, $email_content)
 
   // You can check the response for success/failure
   if ($response) {
-    echo "Email sent successfully!";
+    echo "$recipient_name, $recipient_email | Email sent successfully!";
   } else {
     var_dump($response);
     var_dump($err);
-    echo "Failed to send email!";
+    echo "$recipient_name, $recipient_email | Failed to send email!";
   }
 }
 
@@ -172,6 +172,6 @@ foreach ($users as $u) {
 
 
   $emailContent =  prepareEmailContent($u[0], $u[2]);
-  echo $emailContent;
-  // sendEmail($u[1], $u[0], $emailContent);
+  // echo $emailContent;
+  sendEmail($u[1], $u[0], $emailContent);
 }
