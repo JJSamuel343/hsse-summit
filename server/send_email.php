@@ -5,6 +5,7 @@ require_once "./conn.php";
 
 use Dotenv\Dotenv;
 use chillerlan\QRCode\Common\EccLevel;
+use chillerlan\QRCode\Output\QRGdImagePNG;
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 
@@ -17,6 +18,8 @@ function generateQRCode($ticket_number)
   // Create QR code options
   $options = new QROptions([
     'eccLevel' => EccLevel::H,              // Error correction level
+    'imageBase64' => false,
+    'outputType' => QRGdImagePNG::GDIMAGE_PNG,
     'scale' => 10,                             // Size of the QR code
   ]);
 
