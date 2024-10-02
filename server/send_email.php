@@ -62,7 +62,7 @@ function sendEmail($recipient_email, $recipient_name, $ticket_number)
 
   $data = array(
     "sender" => array(
-      "name" => "EMRSVP",
+      "name" => "HSSE Partner Summit 2024",
       "email" => "Emrsvp@synapzemy.com"
     ),
     "to" => array(
@@ -76,7 +76,7 @@ function sendEmail($recipient_email, $recipient_name, $ticket_number)
       "photo_url" => generateQRCode($ticket_number),
     ),
     "templateId" => 42,
-    "subject" => "Your Ticket and QR Code",
+    "subject" => "HSSE Partner Summit 2024",
   );
 
   $curl = curl_init();
@@ -129,43 +129,9 @@ function getUsers($conn)
   return $output;
 }
 
-function add_users($data, $conn)
-{
-  $name = "";
-  $email = "";
-  $ticket_number = "";
 
-  $stmt = $conn->prepare("INSERT INTO users (name, email, ticket_number) VALUES (?, ?, ?)");
-  $stmt->bind_param("sss", $name, $email, $ticket_number);
 
-  foreach ($data as $d) {
-    $name = $d[0];
-    $email = $d[1];
-    $ticket_number = $d[2];
 
-    $stmt->execute();
-  }
-}
-
-function seedTest($conn)
-{
-  $seed = [
-    ['Quah Jit', 'quahjit@gmail.com', '10005'],
-    ['Fadil', 'fadil@engage.media.com.my', '10006'],
-    ['Joshua', 'joshuajs92@gmail.com', '10007'],
-  ];
-
-  $toSave = [];
-
-  foreach ($seed as $s) {
-    $result = $conn->query("SELECT id from users where name = '" . $s[0] . "' and email = '" . $s[1] . "'");
-    if ($result->num_rows < 1) {
-      $toSave[] = $s;
-    }
-  }
-
-  add_users($toSave, $conn);
-}
 
 $users = getUsers($conn);
 

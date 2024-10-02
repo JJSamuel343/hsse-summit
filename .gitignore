@@ -1,2 +1,4 @@
 .env
 /server/qrcodes/
+/server/*.csv
+/server/db_seeder.php
