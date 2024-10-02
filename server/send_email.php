@@ -64,24 +64,103 @@ function sendEmail($recipient_email, $recipient_name, $email_content)
     "htmlContent" => $email_content
   );
 
-  $ch = curl_init('https://api.brevo.com/v3/smtp/email');
-  curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-  curl_setopt($ch, CURLOPT_POST, true);
-  curl_setopt($ch, CURLOPT_POSTFIELDS, json_encode($data));
-  curl_setopt($ch, CURLOPT_HTTPHEADER, array(
-    'api-key: ' . $api_key,
-    'Content-Type: application/json'
+  $curl = curl_init();
+
+  curl_setopt_array($curl, array(
+    CURLOPT_URL => "https://api.brevo.com/v3/smtp/email",
+    CURLOPT_RETURNTRANSFER => true,
+    CURLOPT_ENCODING => "",
+    CURLOPT_MAXREDIRS => 10,
+    CURLOPT_TIMEOUT => 30,
+    CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+    CURLOPT_CUSTOMREQUEST => "POST",
+    CURLOPT_POSTFIELDS => json_encode($data),
+    CURLOPT_HTTPHEADER => array(
+      "accept: application/json",
+      "api-key: $api_key",
+      "content-type: application/json"
+    ),
   ));
 
-  $response = curl_exec($ch);
-  curl_close($ch);
+  $response = curl_exec($curl);
+  $err = curl_error($curl);
+  curl_close($curl);
 
+  var_dump($err);
   // You can check the response for success/failure
   if ($response) {
     echo "Email sent successfully!";
   } else {
+    var_dump($response);
     echo "Failed to send email!";
   }
 }
 
-echo prepareEmailContent('Test', '2552424s');
+function getUsers($conn)
+{
+
+
+  $sql = "SELECT `name`, email, ticket_number from users";
+  $output = [];
+  if ($result = $conn->query($sql)) {
+    while ($row = $result->fetch_row()) {
+      $output[] = $row;
+    }
+    $result->free_result();
+  }
+
+  $conn->close();
+
+  return $output;
+}
+
+function add_users($data, $conn)
+{
+  $name = "";
+  $email = "";
+  $ticket_number = "";
+
+  $stmt = $conn->prepare("INSERT INTO users (name, email, ticket_number) VALUES (?, ?, ?)");
+  $stmt->bind_param("sss", $name, $email, $ticket_number);
+
+  foreach ($data as $d) {
+    $name = $d[0];
+    $email = $d[1];
+    $ticket_number = $d[2];
+
+    $stmt->execute();
+  }
+}
+
+function seedTest($conn)
+{
+  $seed = [
+    ['Quah Jit', 'quahjit@gmail.com', '10005'],
+    ['Fadil', 'fadil@engage.media.com.my', '10006'],
+    ['Joshua', 'joshuajs92@gmail.com', '10007'],
+  ];
+
+  $toSave = [];
+
+  foreach ($seed as $s) {
+    $result = $conn->query("SELECT id from users where name = '" . $s[0] . "' and email = '" . $s[1] . "'");
+    if ($result->num_rows < 1) {
+      $toSave[] = $s;
+    }
+  }
+
+  add_users($toSave, $conn);
+}
+
+$users = getUsers($conn);
+
+foreach ($users as $u) {
+  if ($u[0] !== "Joshua") {
+    continue;
+  }
+
+
+  $emailContent =  prepareEmailContent($u[0], $u[2]);
+
+  sendEmail($u[1], $u[0], $emailContent);
+}
