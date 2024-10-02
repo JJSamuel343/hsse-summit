@@ -94,12 +94,12 @@ function sendEmail($recipient_email, $recipient_name, $email_content)
   $err = curl_error($curl);
   curl_close($curl);
 
-  var_dump($err);
   // You can check the response for success/failure
   if ($response) {
     echo "Email sent successfully!";
   } else {
     var_dump($response);
+    var_dump($err);
     echo "Failed to send email!";
   }
 }
@@ -169,6 +169,6 @@ foreach ($users as $u) {
 
 
   $emailContent =  prepareEmailContent($u[0], $u[2]);
-
-  sendEmail($u[1], $u[0], $emailContent);
+  echo $emailContent;
+  // sendEmail($u[1], $u[0], $emailContent);
 }
