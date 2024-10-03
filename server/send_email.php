@@ -132,7 +132,7 @@ function getUsers($conn)
 
 
 
-
+/*
 $users = getUsers($conn);
 
 foreach ($users as $u) {
@@ -142,3 +142,4 @@ foreach ($users as $u) {
   // echo $emailContent;
   // sendEmail($u[1], $u[0], $u[2]);
 }
+*/
