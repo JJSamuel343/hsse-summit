@@ -44,8 +44,8 @@ $company = $user['company'];
       </div>
       <div class="col-12"></div>
       <div class="col-6 text-center mt-4 mb-4">
-        <h1 class="hideori fadein3"><?php $name ?></h1>
-        <h2 class=" hideori fadein4"><?php $designation ?> <?php $company ?></h2>
+        <h1 class="hideori fadein3"><?php echo $name ?></h1>
+        <h2 class=" hideori fadein4"><?php echo $designation ?> <?php echo $company ?></h2>
       </div>
     </div>
   </div>
