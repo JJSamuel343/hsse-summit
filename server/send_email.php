@@ -140,5 +140,5 @@ foreach ($users as $u) {
 
   // $emailContent =  prepareEmailContent($u[0], $u[2]);
   // echo $emailContent;
-  sendEmail($u[1], $u[0], $u[2]);
+  // sendEmail($u[1], $u[0], $u[2]);
 }
