@@ -96,7 +96,6 @@ function sendEmail($recipient_email, $recipient_name, $ticket_number)
       "content-type: application/json"
     ),
   ));
-
   $response = curl_exec($curl);
   $err = curl_error($curl);
   curl_close($curl);
