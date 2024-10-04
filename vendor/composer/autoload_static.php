@@ -7,12 +7,18 @@ namespace Composer\Autoload;
 class ComposerStaticInita0127062c15783421e5de5c55e441baa
 {
     public static $files = array (
+        '6124b4c8570aa390c21fafd04a26c69f' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/deep_copy.php',
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
         'a4a119a56e50fbb293281d9a48007e0e' => __DIR__ . '/..' . '/symfony/polyfill-php80/bootstrap.php',
+        'db356362850385d08a5381de2638b5fd' => __DIR__ . '/..' . '/mpdf/mpdf/src/functions.php',
     );
 
     public static $prefixLengthsPsr4 = array (
+        's' => 
+        array (
+            'setasign\\Fpdi\\' => 14,
+        ),
         'c' => 
         array (
             'chillerlan\\Settings\\' => 20,
@@ -26,7 +32,15 @@ class ComposerStaticInita0127062c15783421e5de5c55e441baa
         ),
         'P' => 
         array (
+            'Psr\\Log\\' => 8,
+            'Psr\\Http\\Message\\' => 17,
             'PhpOption\\' => 10,
+        ),
+        'M' => 
+        array (
+            'Mpdf\\PsrLogAwareTrait\\' => 22,
+            'Mpdf\\PsrHttpMessageShim\\' => 24,
+            'Mpdf\\' => 5,
         ),
         'G' => 
         array (
@@ -35,24 +49,15 @@ class ComposerStaticInita0127062c15783421e5de5c55e441baa
         'D' => 
         array (
             'Dotenv\\' => 7,
-        ),
-        'C' => 
-        array (
-            'Com\\Tecnick\\Unicode\\Data\\' => 25,
-            'Com\\Tecnick\\Unicode\\' => 20,
-            'Com\\Tecnick\\Pdf\\Page\\' => 21,
-            'Com\\Tecnick\\Pdf\\Image\\' => 22,
-            'Com\\Tecnick\\Pdf\\Graph\\' => 22,
-            'Com\\Tecnick\\Pdf\\Font\\' => 21,
-            'Com\\Tecnick\\Pdf\\Encrypt\\' => 24,
-            'Com\\Tecnick\\Pdf\\' => 16,
-            'Com\\Tecnick\\File\\' => 17,
-            'Com\\Tecnick\\Color\\' => 18,
-            'Com\\Tecnick\\Barcode\\' => 20,
+            'DeepCopy\\' => 9,
         ),
     );
 
     public static $prefixDirsPsr4 = array (
+        'setasign\\Fpdi\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/setasign/fpdi/src',
+        ),
         'chillerlan\\Settings\\' => 
         array (
             0 => __DIR__ . '/..' . '/chillerlan/php-settings-container/src',
@@ -73,9 +78,29 @@ class ComposerStaticInita0127062c15783421e5de5c55e441baa
         array (
             0 => __DIR__ . '/..' . '/symfony/polyfill-ctype',
         ),
+        'Psr\\Log\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/log/src',
+        ),
+        'Psr\\Http\\Message\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+        ),
         'PhpOption\\' => 
         array (
             0 => __DIR__ . '/..' . '/phpoption/phpoption/src/PhpOption',
+        ),
+        'Mpdf\\PsrLogAwareTrait\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/psr-log-aware-trait/src',
+        ),
+        'Mpdf\\PsrHttpMessageShim\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/psr-http-message-shim/src',
+        ),
+        'Mpdf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/mpdf/mpdf/src',
         ),
         'GrahamCampbell\\ResultType\\' => 
         array (
@@ -85,49 +110,9 @@ class ComposerStaticInita0127062c15783421e5de5c55e441baa
         array (
             0 => __DIR__ . '/..' . '/vlucas/phpdotenv/src',
         ),
-        'Com\\Tecnick\\Unicode\\Data\\' => 
+        'DeepCopy\\' => 
         array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-unicode-data/src',
-        ),
-        'Com\\Tecnick\\Unicode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-unicode/src',
-        ),
-        'Com\\Tecnick\\Pdf\\Page\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-pdf-page/src',
-        ),
-        'Com\\Tecnick\\Pdf\\Image\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-pdf-image/src',
-        ),
-        'Com\\Tecnick\\Pdf\\Graph\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-pdf-graph/src',
-        ),
-        'Com\\Tecnick\\Pdf\\Font\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-pdf-font/src',
-        ),
-        'Com\\Tecnick\\Pdf\\Encrypt\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-pdf-encrypt/src',
-        ),
-        'Com\\Tecnick\\Pdf\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-pdf/src',
-        ),
-        'Com\\Tecnick\\File\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-file/src',
-        ),
-        'Com\\Tecnick\\Color\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-color/src',
-        ),
-        'Com\\Tecnick\\Barcode\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/tecnickcom/tc-lib-barcode/src',
+            0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
         ),
     );
 
