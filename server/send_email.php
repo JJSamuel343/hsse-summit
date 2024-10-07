@@ -58,12 +58,13 @@ function prepareEmailContent($name, $ticket_number)
 
 function sendEmail($recipient_email, $recipient_name, $ticket_number)
 {
+  return false;
   $api_key = $_ENV['BREVO_API'];  // Replace with your Brevo API Key
 
   $data = array(
     "sender" => array(
-      "name" => "HSSE Partner Summit 2024",
-      "email" => "Emrsvp@synapzemy.com"
+      "name" => "HSSE Partner Summit 2024",
+      "email" => "hsse.partnerssummit@miscbhd.com"
     ),
     "to" => array(
       array(
@@ -131,14 +132,3 @@ function getUsers($conn)
 
 
 
-/*
-$users = getUsers($conn);
-
-foreach ($users as $u) {
-
-
-  // $emailContent =  prepareEmailContent($u[0], $u[2]);
-  // echo $emailContent;
-  // sendEmail($u[1], $u[0], $u[2]);
-}
-*/
