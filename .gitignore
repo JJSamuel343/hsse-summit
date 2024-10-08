@@ -2,3 +2,4 @@
 /server/qrcodes/
 /server/*.csv
 /server/db_seeder.php
+/server/check_users.php
